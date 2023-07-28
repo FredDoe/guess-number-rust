@@ -13,10 +13,12 @@ fn main() {
 
         let mut guess = String::new();
 
+        // Accept user input
         io::stdin()
             .read_line(&mut guess)
             .expect("Failed to read line");
 
+        // Convert the user input to unsigned 32-bit integer if the input is a number
         let guess: u32 = match guess.trim().parse(){
             Ok(num) => num,
             Err(_) => continue,
@@ -24,6 +26,7 @@ fn main() {
 
         println!("You guessed: {guess}");
 
+        // Compare user input with secret number
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small"),
             Ordering::Greater => println!("Too big"),
